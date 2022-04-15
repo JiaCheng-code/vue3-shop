@@ -1,38 +1,29 @@
 <template>
-  <div>
-    123
-    <el-button>Default</el-button>
-    <el-button type="primary">Primary</el-button>
-    <el-button type="success">Success</el-button>
-    <el-button type="info">Info</el-button>
-    <el-button type="warning">Warning</el-button>
-    <el-button type="danger">Danger</el-button>
-    <el-button>中文</el-button>
+  <div class="login">
+    <login-panel />
   </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  onBeforeMount,
-  onMounted
-} from 'vue'
+import { defineComponent } from 'vue'
+import loginPanel from './cpns/login-panel.vue'
 export default defineComponent({
   name: 'loginIndex',
+  components: {
+    loginPanel
+  },
   setup() {
-    const data = reactive({})
-    onBeforeMount(() => {
-      //2.组件挂载页面之前执行----onBeforeMount
-    })
-    onMounted(() => {
-      //3.组件挂载到页面之后执行-------onMounted
-    })
-    return {
-      ...toRefs(data)
-    }
+    return {}
   }
 })
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/img/bg.svg') 50% / cover no-repeat;
+}
+</style>

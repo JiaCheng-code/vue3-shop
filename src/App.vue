@@ -1,5 +1,9 @@
 <template>
-  <div><router-view /></div>
+  <div class="app"><router-view /></div>
 </template>
 
-<style lang="less"></style>
+<style lang="less">
+.app {
+  height: 100%;
+}
+</style>
