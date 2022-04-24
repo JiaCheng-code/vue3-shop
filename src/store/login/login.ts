@@ -6,6 +6,7 @@ import {
   requestUserInfoById,
   requestUserMenusByRoleId
 } from '@/service/login/login'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 import localCache from '@/utils/cache'
 import router from '@/router'
 
@@ -29,6 +30,14 @@ const loginModule: Module<ILoginState, IRootState> = {
     },
     changeUserMenus(state, userMenus: any) {
       state.userMenus = userMenus
+      // usermenus => menus
+      const routes = mapMenusToRoutes(userMenus)
+
+      // route ==> route.mian.children
+      routes.forEach((route) => {
+        router.addRoute('main', route)
+      })
+      console.log(routes)
     }
   },
   actions: {
@@ -43,6 +52,11 @@ const loginModule: Module<ILoginState, IRootState> = {
       localCache.setCache('userInfo', userInfo)
       const userMenusResult = await requestUserMenusByRoleId(userInfo.role.id)
       const userMenus = userMenusResult.data
+      console.log(userMenus)
+
+      userMenus.forEach((item: any) => {
+        item.icon = item.icon.split('el-icon-')[1]
+      })
       commit('changeUserMenus', userMenus)
       localCache.setCache('userMenus', userMenus)
 
