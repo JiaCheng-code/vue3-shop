@@ -1,14 +1,13 @@
 import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
 import App from './App.vue'
 import router from './router'
 import store from './store'
 import { setupStore } from './store'
 
-import 'element-plus/dist/index.css'
 import 'normalize.css'
 import './assets/css/index.less'
-
+import { globalRegister } from './global'
+import { Fold } from '@element-plus/icons-vue'
 setupStore()
-
-createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
+const app = createApp(App).use(store).use(router).use(globalRegister)
+app.mount('#app')

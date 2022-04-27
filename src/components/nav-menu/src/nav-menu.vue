@@ -54,7 +54,6 @@
 <script lang="ts">
 import { useStore } from '@/store'
 import { defineComponent, computed, ref } from 'vue'
-import { Goods, Setting, Monitor, ChatLineRound } from '@element-plus/icons-vue'
 import { useRouter, useRoute } from 'vue-router'
 import { pathMapToMenu } from '@/utils/map-menus'
 export default defineComponent({
@@ -64,12 +63,6 @@ export default defineComponent({
       type: Boolean,
       default: false
     }
-  },
-  components: {
-    Goods,
-    Setting,
-    Monitor,
-    ChatLineRound
   },
   setup() {
     const store = useStore()

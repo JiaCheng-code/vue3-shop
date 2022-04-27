@@ -1,25 +1,32 @@
 <template>
   <div class="user">
-    <div class="search">
-      <hy-from-item v-bind="formConfig"></hy-from-item>
-    </div>
-    <div class="content"></div>
+    <page-search :searchFormConfig="searchFormConfig" />
+    <page-content
+      :contentTableConfig="contentTableConfig"
+      :pageName="contentTableConfig.pageName"
+    ></page-content>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HyFromItem from '@/base-ui/from'
-import { formConfig } from './config/search.config'
+import { computed, defineComponent, reactive, ref } from 'vue'
+
+import { searchFormConfig } from './config/search.config'
+import { contentTableConfig } from './config/content.config'
+import pageSearch from '@/components/page-search'
+import pageContent from '@/components/nav-content'
+import { useStore } from 'vuex'
 export default defineComponent({
   components: {
-    HyFromItem
+    pageSearch,
+    pageContent
   },
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'user',
   setup() {
     return {
-      formConfig
+      searchFormConfig,
+      contentTableConfig
     }
   }
 })

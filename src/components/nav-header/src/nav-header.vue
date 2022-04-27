@@ -13,7 +13,6 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
 import userInfo from './user-info.vue'
-import { Expand, Fold } from '@element-plus/icons-vue'
 import navBreadcrumb, { IBreadcrumbs } from '@/base-ui/breadcrumb'
 import { pathMapBreadcrumbs } from '@/utils/map-menus'
 import { useStore } from '@/store'
@@ -22,8 +21,6 @@ export default defineComponent({
   name: 'navHeader',
   emits: ['foldChange'],
   components: {
-    Expand,
-    Fold,
     userInfo,
     navBreadcrumb
   },
